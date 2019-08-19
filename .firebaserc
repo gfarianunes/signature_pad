@@ -1,5 +1,15 @@
 {
   "projects": {
-    "default": "signright-282dd"
+    "default": "signright-282dd",
+    "signpro": "signright-282dd"
+  },
+  "targets": {
+    "signright-282dd": {
+      "hosting": {
+        "signpro": [
+          "signpro"
+        ]
+      }
+    }
   }
 }

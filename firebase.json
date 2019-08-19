@@ -1,16 +1,11 @@
 {
   "hosting": {
-    "public": "docs",
+    "target": "signpro",  // "signpro" is the applied target name for the Hosting site "signpro.web.app"
+    "public": "docs",  // contents of this folder are deployed to the site "signpro.web.app"
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   }
 }
