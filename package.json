@@ -81,6 +81,7 @@
     }
   },
   "dependencies": {
+    "mailgun-js": "^0.22.0",
     "signature_pad": "^3.0.0-beta.3"
   }
 }
