@@ -5,13 +5,13 @@ var undoButton = wrapper.querySelector("[data-action=undo]");
 var savePNGButton = wrapper.querySelector("[data-action=save-png]");
 var saveJPGButton = wrapper.querySelector("[data-action=save-jpg]");
 var saveSVGButton = wrapper.querySelector("[data-action=save-svg]");
+var sendMGButton = document.getElementById("mgemail");
 var canvas = wrapper.querySelector("canvas");
 var signaturePad = new SignaturePad(canvas, {
   // It's Necessary to use an opaque color when saving image as JPEG;
   // this option can be omitted if only saving as PNG or SVG
   backgroundColor: 'rgb(255, 255, 255)'
 });
-
 // Adjust canvas coordinate space taking into account pixel ratio,
 // to make it look crisp on mobile devices.
 // This also causes canvas to be cleared.
@@ -79,11 +79,33 @@ clearButton.addEventListener("click", function (event) {
   signaturePad.clear();
 });
 
+sendMGButton.addEventListener("click", function (event) {
+  if (signaturePad.isEmpty()) {
+    alert("Please provide a signature first.");
+  } else {
+    alert("Signature sent.");
+    const mailgun = require("mailgun-js");
+    const DOMAIN = 'sandbox9e770682d26d447fbd32485a4ad9c380.mailgun.org';
+    const api_key = 'key-94601ca7e1b75ed879a12d3d27679058';
+    const mg = mailgun({apiKey: api_key, domain: DOMAIN});
+    const data = {
+      from: 'Excited User <me@samples.org>',
+      to: 'gfarianunes@gmail.com',
+      subject: 'Hello',
+      text: 'Testing some Mailgun awesomness!'
+    };
+    mg.messages().send(data, function (error, body) {
+      console.log(body);
+    });
+  }
+});
+
 saveSVGButton.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
     alert("Please provide a signature first.");
   } else {
     var dataURL = signaturePad.toDataURL('image/svg+xml');
-    download(dataURL, "signature.svg");
+    alert("Signature sent.");
+    //download(dataURL, "signature.svg");
   }
 });
