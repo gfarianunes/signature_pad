@@ -25,6 +25,7 @@ initApp = function() {
         });
       } else {
         // User is signed out.
+        window.location = 'index.html'; //After unsuccessful login, user will be redirected to index.html
         document.getElementById('sign-in-status').textContent = 'Signed out';
         document.getElementById('sign-in').textContent = 'Sign in';
         document.getElementById('account-details').textContent = 'null';
