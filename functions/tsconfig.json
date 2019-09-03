@@ -7,7 +7,7 @@
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": false, // <-- add this line
-    "target": "es2017"
+    "target": "es2015"
   },
   "compileOnSave": true,
   "include": [
